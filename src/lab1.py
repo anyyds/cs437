@@ -7,11 +7,13 @@ min_dist = 20
 
 def main():
     while True:
-        dist = fc.us.get_distance()
-        if dist > 0 and dist < min_dist:
+        # dist = fc.us.get_distance()
+        scan_list = fc.scan_step(35)
+        # if dist > 0 and dist < min_dist:
+        if scan_list[3:7] != [2, 2, 2, 2]:
             fc.stop()
             direction = random.choice([1, 2]) # 1 = left, 2 = right
-            turn_time = random.uniform(0.6, 1.2)
+            turn_time = random.uniform(0.6, 1.5)
             fc.backward(speed)
             time.sleep(0.3)
             if direction == 1:
