@@ -9,6 +9,8 @@ def main():
     while True:
         # dist = fc.us.get_distance()
         scan_list = fc.scan_step(35)
+        if not scan_list:
+            continue
         # if dist > 0 and dist < min_dist:
         if scan_list[3:7] != [2, 2, 2, 2]:
             fc.stop()
