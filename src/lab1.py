@@ -13,7 +13,7 @@ def main():
             direction = random.choice([1, 2]) # 1 = left, 2 = right
             turn_time = random.uniform(0.6, 1.2)
             fc.backward(speed)
-            time.sleep(0.1)
+            time.sleep(0.3)
             if direction == 1:
                 fc.turn_left(speed)
             else:
