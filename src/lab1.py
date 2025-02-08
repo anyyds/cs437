@@ -2,7 +2,7 @@ import picar_4wd as fc
 import time
 import random
 
-speed = 30
+speed = 20
 min_dist = 20
 
 def main():
