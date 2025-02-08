@@ -3,7 +3,7 @@ import time
 import random
 
 speed = 30
-min_dist = 10
+min_dist = 20
 
 def main():
     while True:
