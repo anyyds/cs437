@@ -3,12 +3,12 @@ import time
 import random
 
 speed = 20
-min_dist = 20
+min_dist = 35
 
 def main():
     while True:
         # scan with ultrasonic sensor
-        scan_list = fc.scan_step(35)
+        scan_list = fc.scan_step(min_dist)
 
         # if scan_list returns None, continue
         if not scan_list:
