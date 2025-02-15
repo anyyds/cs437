@@ -12,7 +12,7 @@ def scan_surroundings():
     for angle_deg in range(-60, 60, 5):
         # set servo angle
         fc.servo.set_angle(angle_deg)
-        fc.time.sleep(0.1)
+        fc.time.sleep(0.05)
         # get distance in cm
         dist = fc.us.get_distance()
         if dist < 0:
