@@ -17,7 +17,7 @@
 
 import cv2
 import numpy as np
-from tflite_support.task import processor
+from mediapipe.tasks.python import vision as processor
 
 _MARGIN = 10  # pixels
 _ROW_SIZE = 10  # pixels
@@ -28,7 +28,7 @@ _TEXT_COLOR = (0, 0, 255)  # red
 
 def visualize(
     image: np.ndarray,
-    detection_result: processor.DetectionResult,
+    detection_result: processor.ObjectDetectorResult,
 ) -> np.ndarray:
   """Draws bounding boxes on the input image and return it.
 

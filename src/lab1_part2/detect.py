@@ -19,11 +19,10 @@ import sys
 import time
 
 import cv2
-from tflite_support.task import core
-from tflite_support.task import processor
-from tflite_support.task import vision
+from picamera2 import Picamera2
+from mediapipe.tasks import python
+from mediapipe.tasks.python import vision
 import utils
-
 
 def run(model: str, camera_id: int, width: int, height: int, num_threads: int,
         enable_edgetpu: bool) -> None:
@@ -42,10 +41,10 @@ def run(model: str, camera_id: int, width: int, height: int, num_threads: int,
   counter, fps = 0, 0
   start_time = time.time()
 
-  # Start capturing video input from the camera
-  cap = cv2.VideoCapture(camera_id)
-  cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
-  cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
+  # Initialize the camera
+  picam2 = Picamera2()
+  picam2.configure(picam2.create_preview_configuration(main={"format": "RGB888", "size": (width, height)}))
+  picam2.start()
 
   # Visualization parameters
   row_size = 20  # pixels
@@ -56,30 +55,27 @@ def run(model: str, camera_id: int, width: int, height: int, num_threads: int,
   fps_avg_frame_count = 10
 
   # Initialize the object detection model
-  base_options = core.BaseOptions(
-      file_name=model, use_coral=enable_edgetpu, num_threads=num_threads)
-  detection_options = processor.DetectionOptions(
-      max_results=3, score_threshold=0.3)
-  options = vision.ObjectDetectorOptions(
-      base_options=base_options, detection_options=detection_options)
+  base_options = python.BaseOptions(model_asset_path=model)
+  options = vision.ObjectDetectorOptions(base_options=base_options,
+                                        score_threshold=0.3,
+                                        max_results=3)
   detector = vision.ObjectDetector.create_from_options(options)
 
   # Continuously capture images from the camera and run inference
-  while cap.isOpened():
-    success, image = cap.read()
-    if not success:
-      sys.exit(
-          'ERROR: Unable to read from webcam. Please verify your webcam settings.'
-      )
-
+  while True:
+    image = picam2.capture_array()
     counter += 1
-    image = cv2.flip(image, 1)
+    image = cv2.rotate(image, cv2.ROTATE_180)  # Change the rotation as needed
 
     # Convert the image from BGR to RGB as required by the TFLite model.
     rgb_image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
     # Create a TensorImage object from the RGB image.
-    input_tensor = vision.TensorImage.create_from_array(rgb_image)
+    import mediapipe as mp
+    input_tensor = mp.Image(
+        image_format=mp.ImageFormat.SRGB,
+        data=rgb_image
+    )
 
     # Run object detection estimation using the model.
     detection_result = detector.detect(input_tensor)
@@ -95,6 +91,9 @@ def run(model: str, camera_id: int, width: int, height: int, num_threads: int,
 
     # Show the FPS
     fps_text = 'FPS = {:.1f}'.format(fps)
+
+    print(fps_text)
+
     text_location = (left_margin, row_size)
     cv2.putText(image, fps_text, text_location, cv2.FONT_HERSHEY_PLAIN,
                 font_size, text_color, font_thickness)
@@ -102,10 +101,11 @@ def run(model: str, camera_id: int, width: int, height: int, num_threads: int,
     # Stop the program if the ESC key is pressed.
     if cv2.waitKey(1) == 27:
       break
+
     cv2.imshow('object_detector', image)
 
-  cap.release()
   cv2.destroyAllWindows()
+  picam2.stop()
 
 
 def main():
@@ -123,13 +123,13 @@ def main():
       help='Width of frame to capture from camera.',
       required=False,
       type=int,
-      default=640)
+      default=1280)
   parser.add_argument(
       '--frameHeight',
       help='Height of frame to capture from camera.',
       required=False,
       type=int,
-      default=480)
+      default=960)
   parser.add_argument(
       '--numThreads',
       help='Number of CPU threads to run the model.',
