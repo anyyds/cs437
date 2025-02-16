@@ -3,7 +3,7 @@ import math
 import numpy as np
 import picar_4wd as fc
 import ultrasonic_detect
-import plan_path
+from plan_path import plan_path
 
 import heapq
 
