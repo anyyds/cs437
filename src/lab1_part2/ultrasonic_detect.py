@@ -8,7 +8,7 @@ def mark_obstacle(grid, grid_size, x, y, clearance = 1):
     for i in range(x - clearance, x + clearance + 1):
         for j in range(y - clearance, y + clearance + 1):
             if 0 <= i < grid_size and 0 <= j < grid_size:
-                grid[y, x] = 1
+                grid[j, i] = 1
 
 def scan_surroundings(cur_pos = (19,39), cur_orientation = 'N', grid_size = 40):
     cur_x, cur_y = cur_pos
@@ -35,7 +35,7 @@ def scan_surroundings(cur_pos = (19,39), cur_orientation = 'N', grid_size = 40):
         x = int(round(dist/10 * math.cos(math.radians(angle_deg)))) + cur_x
         y = int(round(dist/10 * math.sin(math.radians(angle_deg)))) + cur_y
 
-        mark_obstacle(obstacle_grid, grid_size, x, y + (grid_size / 2 - 1))
+        mark_obstacle(obstacle_grid, grid_size, x, y + (grid_size // 2 - 1))
     return obstacle_grid
 
 def main():
