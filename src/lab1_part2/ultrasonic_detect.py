@@ -37,7 +37,7 @@ def scan_surroundings(cur_pos = (19,39), cur_orientation = 'N', grid_size = 40):
     return obstacle_grid
 
 def main():
-    obstacle_grid = scan_surroundings()
+    obstacle_grid = scan_surroundings(cur_pos=(2, 4), cur_orientation='N', grid_size=5)
     print(obstacle_grid)
 
 if __name__ == "__main__":
