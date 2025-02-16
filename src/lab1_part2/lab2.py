@@ -2,10 +2,12 @@ import picar_4wd as fc
 import numpy as np
 import math
 
-obstacle_grid = np.zeros((100, 100))
+size = 100
+
+obstacle_grid = np.zeros((size, size))
 
 def mark_obstacle(grid, x, y):
-    if 0 <= x < 100 and 0 <= y < 100:
+    if 0 <= x < size and 0 <= y < size:
         grid[y, x] = 1
 
 def scan_surroundings():
@@ -21,7 +23,7 @@ def scan_surroundings():
         x = int(round(dist * math.cos(math.radians(angle_deg))))
         y = int(round(dist * math.sin(math.radians(angle_deg))))
 
-        mark_obstacle(obstacle_grid, x, y + 49)
+        mark_obstacle(obstacle_grid, x, y + (size / 2 - 1))
 
 def main():
     scan_surroundings()
