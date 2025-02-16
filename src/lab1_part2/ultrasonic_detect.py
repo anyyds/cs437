@@ -6,7 +6,7 @@ size = 100
 
 obstacle_grid = np.zeros((size, size))
 
-def mark_obstacle(grid, x, y, clearance = 2):
+def mark_obstacle(grid, x, y, clearance = 1):
     for i in range(x - clearance, x + clearance + 1):
         for j in range(y - clearance, y + clearance + 1):
             if 0 <= i < size and 0 <= j < size:
