@@ -62,6 +62,7 @@ def run() -> bool:
             print("Stop sign detected")
             return True
     
+    print("No stop sign detected")
     return False
 
 if __name__ == "__main__":
