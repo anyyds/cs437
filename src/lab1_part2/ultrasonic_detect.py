@@ -6,9 +6,11 @@ size = 100
 
 obstacle_grid = np.zeros((size, size))
 
-def mark_obstacle(grid, x, y):
-    if 0 <= x < size and 0 <= y < size:
-        grid[y, x] = 1
+def mark_obstacle(grid, x, y, clearance = 2):
+    for i in range(x - clearance, x + clearance + 1):
+        for j in range(y - clearance, y + clearance + 1):
+            if 0 <= i < size and 0 <= j < size:
+                grid[y, x] = 1
 
 def scan_surroundings():
     for angle_deg in range(-60, 60, 5):
