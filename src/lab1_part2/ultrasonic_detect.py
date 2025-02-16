@@ -3,6 +3,8 @@ import numpy as np
 import math
 
 def mark_obstacle(grid, grid_size, x, y, clearance = 1):
+    x = int(x)
+    y = int(y)
     for i in range(x - clearance, x + clearance + 1):
         for j in range(y - clearance, y + clearance + 1):
             if 0 <= i < grid_size and 0 <= j < grid_size:

@@ -66,6 +66,9 @@ def navigate_path(path, cell_size=20, move_time=0.5):
 
     print("Navigation complete.")
 
+def main():
+    return
+
 
 if __name__ == "__main__":
     test_grid = np.array([
