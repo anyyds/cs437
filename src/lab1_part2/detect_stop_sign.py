@@ -61,7 +61,10 @@ class StopSignDetector():
 
         # Chech if it detect stop sign
         for detection in detection_result.detections:
-            if detection.label == "stop sign":
+            category = detection.categories[0]
+            category_name = category.category_name
+
+            if category_name == "stop sign":
                 print("Stop sign detected")
                 return True
         
