@@ -21,21 +21,23 @@ def scan_surroundings(cur_pos = (19,39), cur_orientation = 'N', grid_size = 40):
         angle_offset = 90
     else:
         angle_offset = 0
-    obstacle_grid = np.zeros((grid_size, grid_size))
+    obstacle_grid = np.zeros((grid_size, grid_size), dtype=int)
     for angle_deg in range(-60, 60, 5):
+        abs_angle_deg = angle_offset + angle_deg
         # set servo angle
         fc.servo.set_angle(angle_deg)
         fc.time.sleep(0.05)
-        abs_angle_deg = angle_offset + angle_deg
         # get distance in cm
-        dist = fc.us.get_distance()
-        if dist < 0:
+        dist_cm = fc.us.get_distance()
+        if dist_cm < 0:
             continue
         
-        x = int(round(dist/10 * math.cos(math.radians(abs_angle_deg)))) + cur_x
-        y = int(round(dist/10 * math.sin(math.radians(abs_angle_deg)))) + cur_y
+        x = (dist_cm/10) * math.cos(math.radians(abs_angle_deg))
+        y = (dist_cm/10) * math.sin(math.radians(abs_angle_deg))
+        x = cur_x + round(x)
+        y = cur_y + round(y)
 
-        mark_obstacle(obstacle_grid, grid_size, x, y + (grid_size // 2 - 1))
+        mark_obstacle(obstacle_grid, grid_size, x, y)
     return obstacle_grid
 
 def main():
