@@ -32,8 +32,8 @@ def scan_surroundings(cur_pos = (19,39), cur_orientation = 'N', grid_size = 40):
         if dist < 0:
             continue
         
-        x = int(round(dist/10 * math.cos(math.radians(angle_deg)))) + cur_x
-        y = int(round(dist/10 * math.sin(math.radians(angle_deg)))) + cur_y
+        x = int(round(dist/10 * math.cos(math.radians(abs_angle_deg)))) + cur_x
+        y = int(round(dist/10 * math.sin(math.radians(abs_angle_deg)))) + cur_y
 
         mark_obstacle(obstacle_grid, grid_size, x, y + (grid_size // 2 - 1))
     return obstacle_grid
