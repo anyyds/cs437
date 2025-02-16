@@ -10,8 +10,7 @@ def main():
     # fc.turn_left(20)
     # time.sleep(1.1) 
 
-
-    # go forward
+    # go forward for 20 cm
     fc.forward(5)
     time.sleep(1)
 
