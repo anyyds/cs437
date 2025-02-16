@@ -13,27 +13,31 @@ def navigate_path(path, cell_size=20, move_time=0.5):
         print("No valid path or path too short to navigate.")
         return
 
-    orientation = 'N'
+    cur_orientation = 'N'
 
-    def turn_to(target_orientation):
-        nonlocal orientation
+    def turn_right():
+        fc.turn_right(20)
+        time.sleep(1.1)
+        fc.stop()
+    def turn_left():
+        fc.turn_left(20)
+        time.sleep(1.1)
+        fc.stop()
+    def turn_around():
+        fc.turn_right(20)
+        time.sleep(2.2)
+        fc.stop()
+    def turn_to(target_orientation, cur_orientation): # turn to one of N, E, S, W
         order = ['N', 'E', 'S', 'W']
-        current_idx = order.index(orientation)
+        current_idx = order.index(cur_orientation)
         target_idx = order.index(target_orientation)
         diff = (target_idx - current_idx) % 4
         if diff == 1:
-            fc.turn_right(20)
-            time.sleep(1.1)
-            fc.stop()
+            turn_right()
         elif diff == 2:
-            fc.turn_right(20)
-            time.sleep(2.2)
-            fc.stop()
+            turn_around()
         elif diff == 3:
-            fc.turn_left(20)
-            time.sleep(1.1)
-            fc.stop()
-        orientation = target_orientation
+            turn_left()
 
     # Move cell by cell
     for i in range(len(path) - 1):
@@ -42,16 +46,20 @@ def navigate_path(path, cell_size=20, move_time=0.5):
         dx = x2 - x1
         dy = y2 - y1
         if dx == 1 and dy == 0:
-            turn_to('E')
+            turn_to('E', cur_orientation)
+            cur_orientation = 'E'
         elif dx == -1 and dy == 0:
-            turn_to('W')
+            turn_to('W', cur_orientation)
+            cur_orientation = 'W'
         elif dx == 0 and dy == 1:
-            turn_to('S')
+            turn_to('S', cur_orientation)
+            cur_orientation = 'S'
         elif dx == 0 and dy == -1:
-            turn_to('N')
+            turn_to('N', cur_orientation)
+            cur_orientation = 'N'
         else:
-            print(f"Warning: Invalid step from {(x1,y1)} to {(x2,y2)}")
-            continue
+            print(f"Error: Invalid step from {(x1,y1)} to {(x2,y2)}")
+            break
         fc.forward(5)
         time.sleep(1)
         fc.stop()
