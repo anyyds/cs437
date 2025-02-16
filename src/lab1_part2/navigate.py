@@ -67,7 +67,7 @@ if __name__ == "__main__":
         [1, 1, 1, 0, 0],
         [0, 0, 0, 0, 0]
     ])
-    start_coord = (4, 2)
+    start_coord = (2, 4)
     dest_coord = (0, 0)
 
     result_path = plan_path(test_grid, start_coord, dest_coord)
