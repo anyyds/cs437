@@ -87,7 +87,7 @@ def main():
         log = obstacle_grid.copy()
         log[cur_pos] = 2
         log[destination] = 3
-        print("Obstacle Grid:\n", log[cur_pos[0] - 10: cur_pos[0] + 10, cur_pos[1] -  10: cur_pos[1] + 10])
+        print("Obstacle Grid:\n", log[cur_pos[0]-10:cur_pos[0]+10, cur_pos[1]- 10:cur_pos[1]+10])
         print("Current orientation: ", cur_orientation)
         path = plan_path(obstacle_grid, cur_pos, destination)
         if not path:
