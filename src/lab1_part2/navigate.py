@@ -129,7 +129,7 @@ if __name__ == "__main__":
     destination = (0, 0)
     cur_orientation = 'N'
     obstacle_grid = map1
-    path = plan_path(obstacle_grid, cur_pos, destination)
+    path = plan_path(map1, cur_pos, destination)
     stop_sign_detector = StopSignDetector()
     while stop_sign_detector.run():
         time.sleep(0.1)
