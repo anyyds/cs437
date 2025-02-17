@@ -66,16 +66,16 @@ def navigate_path(path, cur_orientation, cur_pos):
         if turned:
             break
         fc.forward(5)
-        time.sleep(0.5)
+        time.sleep(0.25)
         fc.stop()
         cur_pos = (x2, y2)
     return cur_orientation, cur_pos
 
 def main():
-    cur_pos = (9, 0)
-    destination = (9, 19)
+    cur_pos = (19, 0)
+    destination = (19, 39)
     cur_orientation = 'N'
-    grid_size = 20
+    grid_size = 40
     obstacle_grid = np.zeros((grid_size, grid_size), dtype=int)
     while True:
         obstacle_grid = ultrasonic_detect.scan_surroundings(
@@ -93,7 +93,7 @@ def main():
         if not path:
             print("No valid path found")
             break
-        cur_orientation, cur_pos = navigate_path(path[:6], cur_orientation, cur_pos)
+        cur_orientation, cur_pos = navigate_path(path[:10], cur_orientation, cur_pos)
         if cur_pos == destination:
             break
 
