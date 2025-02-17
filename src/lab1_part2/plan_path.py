@@ -1,3 +1,5 @@
+# src/lab1_part2/plan_path.py
+
 import heapq
 import numpy as np
 

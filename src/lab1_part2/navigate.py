@@ -8,12 +8,10 @@ from plan_path import plan_path
 import heapq
 
 
-def navigate_path(path, cell_size=20, move_time=0.5):
-    if not path or len(path) < 2:
-        print("No valid path or path too short to navigate.")
+def navigate_path(path, cur_orientation, cur_pos):
+    if not path:
+        print("No valid path.")
         return
-
-    cur_orientation = 'N'
 
     def turn_right():
         fc.turn_right(20)
@@ -63,10 +61,28 @@ def navigate_path(path, cell_size=20, move_time=0.5):
         fc.forward(5)
         time.sleep(1)
         fc.stop()
+        cur_pos = (x2, y2)
 
     print("Navigation complete.")
+    return cur_orientation, cur_pos
 
 def main():
+    cur_pos = (3, 6)
+    destination = (0, 0)
+    cur_orientation = 'N'
+    grid_size = 7
+    while True:
+        obstacle_grid = ultrasonic_detect.scan_surroundings(
+            cur_pos=cur_pos,
+            cur_orientation=cur_orientation,
+            grid_size=grid_size
+        )
+        print("Obstacle Grid:\n", obstacle_grid)
+        path = plan_path(obstacle_grid, cur_pos, destination)
+        cur_orientation, cur_pos = navigate_path(path[:5], cur_orientation, cur_pos)
+        if cur_pos == destination:
+            break
+
     return
 
 
