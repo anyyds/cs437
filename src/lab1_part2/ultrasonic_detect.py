@@ -4,7 +4,7 @@ import picar_4wd as fc
 import numpy as np
 import math
 
-def mark_obstacle(grid, grid_size, x, y, clearance = 0):
+def mark_obstacle(grid, grid_size, x, y, clearance = 1):
     x = int(x)
     y = int(y)
     for i in range(x - clearance, x + clearance + 1):
