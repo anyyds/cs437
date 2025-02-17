@@ -4,11 +4,12 @@ import numpy as np
 import picar_4wd as fc
 import ultrasonic_detect
 from plan_path import plan_path
+from detect_stop_sign import StopSignDetector
 
 import heapq
 
 
-def navigate_path(path, cur_orientation, cur_pos):
+def navigate_path(path, cur_orientation, cur_pos, stop_sign_detector):
     if not path:
         print("No valid path.")
         return
@@ -44,6 +45,8 @@ def navigate_path(path, cur_orientation, cur_pos):
 
     # Move cell by cell
     for i in range(len(path) - 1):
+        while stop_sign_detector.run():
+            time.sleep(0.1)
         (x1, y1) = path[i]
         (x2, y2) = path[i + 1]
         dx = x2 - x1
@@ -76,10 +79,9 @@ def main():
     destination = (19, 39)
     cur_orientation = 'N'
     grid_size = 40
-    obstacle_grid = np.zeros((grid_size, grid_size), dtype=int)
+    stop_sign_detector = StopSignDetector()
     while True:
         obstacle_grid = ultrasonic_detect.scan_surroundings(
-            obstacle_grid,
             cur_pos=cur_pos,
             cur_orientation=cur_orientation,
             grid_size=grid_size
@@ -93,7 +95,7 @@ def main():
         if not path:
             print("No valid path found")
             break
-        cur_orientation, cur_pos = navigate_path(path[:10], cur_orientation, cur_pos)
+        cur_orientation, cur_pos = navigate_path(path[:10], cur_orientation, cur_pos, stop_sign_detector)
         if cur_pos == destination:
             print("reached destination")
             break
