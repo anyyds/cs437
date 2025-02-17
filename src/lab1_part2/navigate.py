@@ -67,16 +67,16 @@ def navigate_path(path, cur_orientation, cur_pos, stop_sign_detector):
         if turned:
             break
         fc.forward(5)
-        time.sleep(0.25)
+        time.sleep(0.5)
         fc.stop()
         cur_pos = (x2, y2)
     return cur_orientation, cur_pos
 
 def main():
-    cur_pos = (19, 0)
-    destination = (19, 39)
+    cur_pos = (9, 0)
+    destination = (9, 19)
     cur_orientation = 'N'
-    grid_size = 40
+    grid_size = 20
     stop_sign_detector = StopSignDetector()
     while True:
         obstacle_grid = ultrasonic_detect.scan_surroundings(
@@ -95,7 +95,7 @@ def main():
             break
         while stop_sign_detector.run():
             time.sleep(0.1)
-        cur_orientation, cur_pos = navigate_path(path[:5], cur_orientation, cur_pos, stop_sign_detector)
+        cur_orientation, cur_pos = navigate_path(path[:2], cur_orientation, cur_pos, stop_sign_detector)
         if cur_pos == destination:
             print("reached destination")
             break
