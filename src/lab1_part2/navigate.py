@@ -289,7 +289,7 @@ if __name__ == "__main__":
         detect()
         move_forward()
         move_forward()
-    map1()
-    # map2()
+    # map1()
+    map2()
 
     # main()
