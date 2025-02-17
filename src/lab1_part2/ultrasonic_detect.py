@@ -42,9 +42,9 @@ def scan_surroundings(obstacle_grid, cur_pos = (19,39), cur_orientation = 'N', g
     return obstacle_grid
 
 def main():
-    grid_size=40
+    grid_size=20
     obstacle_grid = np.zeros((grid_size, grid_size), dtype=int)
-    obstacle_grid = scan_surroundings(obstacle_grid, cur_pos=(19,39), cur_orientation='N', grid_size=grid_size)
+    obstacle_grid = scan_surroundings(obstacle_grid, cur_pos=(9, 19), cur_orientation='N', grid_size=grid_size)
     print(obstacle_grid)
 
 if __name__ == "__main__":
