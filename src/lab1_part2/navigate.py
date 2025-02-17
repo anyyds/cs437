@@ -95,6 +95,7 @@ def main():
             break
         cur_orientation, cur_pos = navigate_path(path[:10], cur_orientation, cur_pos)
         if cur_pos == destination:
+            print("reached destination")
             break
 
     return
