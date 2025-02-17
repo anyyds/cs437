@@ -8,7 +8,6 @@ from detect_stop_sign import StopSignDetector
 
 import heapq
 
-
 def navigate_path(path, cur_orientation, cur_pos, stop_sign_detector):
     if not path:
         print("No valid path.")
@@ -104,20 +103,41 @@ def main():
 
 
 if __name__ == "__main__":
-    # test_grid = np.array([
-    #     [0, 0, 1, 0, 0],
-    #     [0, 1, 0, 1, 1],
-    #     [0, 0, 0, 0, 0],
-    #     [1, 1, 1, 0, 0],
-    #     [0, 0, 0, 0, 0]
-    # ])
-    # start_coord = (2, 4)
-    # dest_coord = (0, 0)
-
-    # result_path = plan_path(test_grid, start_coord, dest_coord)
-    # if result_path is None:
-    #     print("No path found.")
-    # else:
-    #     print("Path found:", result_path)
-    #     navigate_path(result_path)
+    map1 = [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ]
+    cur_pos = (19, 19)
+    destination = (0, 0)
+    cur_orientation = 'N'
+    obstacle_grid = map1
+    path = plan_path(obstacle_grid, cur_pos, destination)
+    stop_sign_detector = StopSignDetector()
+    while stop_sign_detector.run():
+        time.sleep(0.1)
+    while path:
+        ultrasonic_detect.scan_surroundings(
+            cur_pos=cur_pos,
+            cur_orientation=cur_orientation,
+            grid_size=20
+        )
+        cur_orientation, cur_pos = navigate_path(path[:2], cur_orientation, cur_pos, stop_sign_detector)
+        path = path[2:]
     main()
