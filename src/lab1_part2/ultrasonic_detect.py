@@ -44,7 +44,7 @@ def scan_surroundings(obstacle_grid, cur_pos = (19,39), cur_orientation = 'N', g
 def main():
     grid_size=40
     obstacle_grid = np.zeros((grid_size, grid_size), dtype=int)
-    obstacle_grid = scan_surroundings(cur_pos=(19,39), cur_orientation='N', grid_size=grid_size)
+    obstacle_grid = scan_surroundings(obstacle_grid, cur_pos=(19,39), cur_orientation='N', grid_size=grid_size)
     print(obstacle_grid)
 
 if __name__ == "__main__":
