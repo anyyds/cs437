@@ -63,12 +63,12 @@ def navigate_path(path, cur_orientation, cur_pos):
         else:
             print(f"Error: Invalid step from {(x1,y1)} to {(x2,y2)}")
             break
+        if turned:
+            break
         fc.forward(5)
         time.sleep(0.5)
         fc.stop()
         cur_pos = (x2, y2)
-        if turned:
-            break
     return cur_orientation, cur_pos
 
 def main():
