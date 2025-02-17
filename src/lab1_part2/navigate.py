@@ -46,7 +46,7 @@ def navigate_path(path, cur_orientation, cur_pos, stop_sign_detector):
     # Move cell by cell
     for i in range(len(path) - 1):
         while stop_sign_detector.run():
-            time.sleep(0.1)
+            continue
         (x1, y1) = path[i]
         (x2, y2) = path[i + 1]
         dx = x2 - x1
