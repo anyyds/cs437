@@ -84,7 +84,9 @@ def main():
             cur_orientation=cur_orientation,
             grid_size=grid_size
         )
-        print("Obstacle Grid:\n", obstacle_grid)
+        log = obstacle_grid.copy()
+        log[cur_pos] = 2
+        print("Obstacle Grid:\n", log)
         path = plan_path(obstacle_grid, cur_pos, destination)
         cur_orientation, cur_pos = navigate_path(path[:3], cur_orientation, cur_pos)
         if cur_pos == destination:
