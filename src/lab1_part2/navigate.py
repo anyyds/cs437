@@ -90,6 +90,9 @@ def main():
         print("Obstacle Grid:\n", log)
         print("Current orientation: ", cur_orientation)
         path = plan_path(obstacle_grid, cur_pos, destination)
+        if not path:
+            print("No valid path found")
+            break
         cur_orientation, cur_pos = navigate_path(path[:6], cur_orientation, cur_pos)
         if cur_pos == destination:
             break
