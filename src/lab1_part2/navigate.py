@@ -18,17 +18,14 @@ def navigate_path(path, cur_orientation, cur_pos):
         fc.turn_right(20)
         time.sleep(1.1)
         fc.stop()
-        turned = True
     def turn_left():
         fc.turn_left(20)
         time.sleep(1.1)
         fc.stop()
-        turned = True
     def turn_around():
         fc.turn_right(20)
         time.sleep(2.2)
         fc.stop()
-        turned = True
     def turn_to(target_orientation, cur_orientation): # turn to one of N, E, S, W
         order = ['N', 'E', 'S', 'W']
         current_idx = order.index(cur_orientation)
@@ -36,10 +33,14 @@ def navigate_path(path, cur_orientation, cur_pos):
         diff = (target_idx - current_idx) % 4
         if diff == 1:
             turn_right()
+            return True
         elif diff == 2:
             turn_around()
+            return True
         elif diff == 3:
             turn_left()
+            return True
+        return False
 
     # Move cell by cell
     for i in range(len(path) - 1):
@@ -48,16 +49,16 @@ def navigate_path(path, cur_orientation, cur_pos):
         dx = x2 - x1
         dy = y2 - y1
         if dx == 1 and dy == 0:
-            turn_to('E', cur_orientation)
+            turned = turn_to('E', cur_orientation)
             cur_orientation = 'E'
         elif dx == -1 and dy == 0:
-            turn_to('W', cur_orientation)
+            turned = turn_to('W', cur_orientation)
             cur_orientation = 'W'
         elif dx == 0 and dy == 1:
-            turn_to('S', cur_orientation)
+            turned = turn_to('S', cur_orientation)
             cur_orientation = 'S'
         elif dx == 0 and dy == -1:
-            turn_to('N', cur_orientation)
+            turned = turn_to('N', cur_orientation)
             cur_orientation = 'N'
         else:
             print(f"Error: Invalid step from {(x1,y1)} to {(x2,y2)}")
