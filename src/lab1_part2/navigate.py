@@ -71,8 +71,10 @@ def main():
     destination = (0, 0)
     cur_orientation = 'N'
     grid_size = 7
+    obstacle_grid = np.zeros((grid_size, grid_size), dtype=int)
     while True:
         obstacle_grid = ultrasonic_detect.scan_surroundings(
+            obstacle_grid,
             cur_pos=cur_pos,
             cur_orientation=cur_orientation,
             grid_size=grid_size

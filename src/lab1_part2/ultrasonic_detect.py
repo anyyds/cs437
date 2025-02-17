@@ -12,7 +12,7 @@ def mark_obstacle(grid, grid_size, x, y, clearance = 1):
             if 0 <= i < grid_size and 0 <= j < grid_size:
                 grid[j, i] = 1
 
-def scan_surroundings(cur_pos = (19,39), cur_orientation = 'N', grid_size = 40):
+def scan_surroundings(obstacle_grid, cur_pos = (19,39), cur_orientation = 'N', grid_size = 40):
     cur_x, cur_y = cur_pos
     # get angle offset from orientation
     if cur_orientation == 'E':
@@ -23,7 +23,6 @@ def scan_surroundings(cur_pos = (19,39), cur_orientation = 'N', grid_size = 40):
         angle_offset = 90
     else:
         angle_offset = 0
-    obstacle_grid = np.zeros((grid_size, grid_size), dtype=int)
     for angle_deg in range(-60, 60, 5):
         abs_angle_deg = angle_offset + angle_deg
         # set servo angle
