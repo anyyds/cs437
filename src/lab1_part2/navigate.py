@@ -13,18 +13,22 @@ def navigate_path(path, cur_orientation, cur_pos):
         print("No valid path.")
         return
 
+    turned = False
     def turn_right():
         fc.turn_right(20)
         time.sleep(1.1)
         fc.stop()
+        turned = True
     def turn_left():
         fc.turn_left(20)
         time.sleep(1.1)
         fc.stop()
+        turned = True
     def turn_around():
         fc.turn_right(20)
         time.sleep(2.2)
         fc.stop()
+        turned = True
     def turn_to(target_orientation, cur_orientation): # turn to one of N, E, S, W
         order = ['N', 'E', 'S', 'W']
         current_idx = order.index(cur_orientation)
@@ -62,15 +66,15 @@ def navigate_path(path, cur_orientation, cur_pos):
         time.sleep(1)
         fc.stop()
         cur_pos = (x2, y2)
-
-    print("Navigation complete.")
+        if turned:
+            break
     return cur_orientation, cur_pos
 
 def main():
     cur_pos = (3, 6)
     destination = (0, 0)
     cur_orientation = 'N'
-    grid_size = 7
+    grid_size = 20
     obstacle_grid = np.zeros((grid_size, grid_size), dtype=int)
     while True:
         obstacle_grid = ultrasonic_detect.scan_surroundings(
