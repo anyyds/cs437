@@ -140,4 +140,4 @@ if __name__ == "__main__":
         )
         cur_orientation, cur_pos = navigate_path(path[:2], cur_orientation, cur_pos, stop_sign_detector)
         path = path[2:]
-    main()
+    # main()
