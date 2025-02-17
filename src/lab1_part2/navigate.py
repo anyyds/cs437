@@ -103,29 +103,51 @@ def main():
 
 
 if __name__ == "__main__":
-    map1 = [
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [1, 1, 1, 1, 1, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 1, 1, 1, 1, 1, 1],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    ]
-    map1 = np.array(map1)
-    cur_pos = (9, 9)
-    destination = (0, 0)
-    cur_orientation = 'N'
-    obstacle_grid = map1
-    path = plan_path(map1, cur_pos, destination)
-    stop_sign_detector = StopSignDetector()
-    while stop_sign_detector.run():
-        time.sleep(0.1)
-    while path:
+    def turn_right():
+        fc.turn_right(20)
+        time.sleep(1.1)
+        fc.stop()
+    def turn_left():
+        fc.turn_left(20)
+        time.sleep(1.1)
+        fc.stop()
+    def turn_around():
+        fc.turn_right(20)
+        time.sleep(2.2)
+        fc.stop()
+    def move_forward():
+        fc.forward(5)
+        time.sleep(0.5)
+        fc.stop()
+    def detect():
         ultrasonic_detect.scan_surroundings()
-        cur_orientation, cur_pos = navigate_path(path[:2], cur_orientation, cur_pos, stop_sign_detector)
-        path = path[2:]
+    detect()
+    turn_left()
+    move_forward()
+    move_forward()
+    detect()
+    move_forward()
+    move_forward()
+    detect()
+    move_forward()
+    move_forward()
+    detect()
+    move_forward()
+    turn_right()
+    detect()
+    move_forward()
+    move_forward()
+    detect()
+    move_forward()
+    move_forward()
+    detect()
+    move_forward()
+    move_forward()
+    detect()
+    move_forward()
+    move_forward()
+    detect()
+    move_forward()
+    move_forward()
+
     # main()
