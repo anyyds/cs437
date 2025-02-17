@@ -31,7 +31,7 @@ def scan_surroundings(obstacle_grid, cur_pos = (19,39), cur_orientation = 'N', g
         # get distance in cm
         dist_cm = fc.us.get_distance()
         print(angle_deg, dist_cm)
-        if dist_cm < 0:
+        if dist_cm < 0 or dist_cm > 50:
             continue
         
         x = (dist_cm/10) * math.cos(math.radians(abs_angle_deg))
