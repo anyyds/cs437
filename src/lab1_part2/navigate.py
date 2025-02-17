@@ -219,6 +219,12 @@ if __name__ == "__main__":
         move_forward()
         detect()
         move_forward()
+        move_forward()
+        detect()
+        move_forward()
+        move_forward()
+        detect()
+        move_forward()
 
         turn_left()
         detect()
