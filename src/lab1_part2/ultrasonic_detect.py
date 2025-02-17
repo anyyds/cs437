@@ -47,7 +47,11 @@ def main():
     grid_size=20
     obstacle_grid = scan_surroundings(cur_pos=(9, 9), cur_orientation='N', grid_size=grid_size)
     obstacle_grid[9, 9] = 2
-    print(obstacle_grid)
+
+    # Rotate the obstacle grid 90 degrees counterclockwise
+    rotated_obstacle_grid = np.rot90(obstacle_grid)
+
+    print(rotated_obstacle_grid)
 
 if __name__ == "__main__":
     main()
