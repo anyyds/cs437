@@ -154,6 +154,9 @@ if __name__ == "__main__":
     move_forward()
     detect()
     move_forward()
+    move_forward()
+    detect()
+    move_forward()
     turn_left()
     detect()
     move_forward()
@@ -167,6 +170,12 @@ if __name__ == "__main__":
     move_forward()
     move_forward()
     detect()
+    turn_right()
+    detect()
+    move_forward()
+    move_forward()
+    detect()
+    move_forward()
 
 
     # main()
