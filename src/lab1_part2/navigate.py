@@ -72,8 +72,8 @@ def navigate_path(path, cur_orientation, cur_pos):
     return cur_orientation, cur_pos
 
 def main():
-    cur_pos = (9, 19)
-    destination = (9, 0)
+    cur_pos = (9, 0)
+    destination = (9, 19)
     cur_orientation = 'N'
     grid_size = 20
     obstacle_grid = np.zeros((grid_size, grid_size), dtype=int)
