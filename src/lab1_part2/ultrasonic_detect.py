@@ -24,7 +24,7 @@ def scan_surroundings(cur_pos = (19,39), cur_orientation = 'N', grid_size = 40):
     else:
         angle_offset = 0
     obstacle_grid = np.zeros((grid_size, grid_size), dtype=int)
-    for angle_deg in range(-60, 60, 5):
+    for angle_deg in range(-60, 60, 10):
         abs_angle_deg = angle_offset + angle_deg
         # set servo angle
         fc.servo.set_angle(angle_deg)
