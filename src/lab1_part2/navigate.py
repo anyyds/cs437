@@ -48,16 +48,16 @@ def navigate_path(path, cur_orientation, cur_pos):
         (x2, y2) = path[i + 1]
         dx = x2 - x1
         dy = y2 - y1
-        if dx == 1 and dy == 0:
+        if dx == -1 and dy == 0:
             turned = turn_to('E', cur_orientation)
             cur_orientation = 'E'
-        elif dx == -1 and dy == 0:
+        elif dx == 1 and dy == 0:
             turned = turn_to('W', cur_orientation)
             cur_orientation = 'W'
-        elif dx == 0 and dy == 1:
+        elif dx == 0 and dy == -1:
             turned = turn_to('S', cur_orientation)
             cur_orientation = 'S'
-        elif dx == 0 and dy == -1:
+        elif dx == 0 and dy == 1:
             turned = turn_to('N', cur_orientation)
             cur_orientation = 'N'
         else:
