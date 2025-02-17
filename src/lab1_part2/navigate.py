@@ -169,6 +169,9 @@ if __name__ == "__main__":
         move_forward()
         move_forward()
         detect()
+        move_forward()
+        move_forward()
+        detect()
 
         turn_left()
         detect()
@@ -183,8 +186,6 @@ if __name__ == "__main__":
         turn_right()
         detect()
         move_forward()
-        move_forward()
-        detect()
         move_forward()
     def map2():
         stop_sign_detector = StopSignDetector()
