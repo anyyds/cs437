@@ -134,11 +134,7 @@ if __name__ == "__main__":
     while stop_sign_detector.run():
         time.sleep(0.1)
     while path:
-        ultrasonic_detect.scan_surroundings(
-            cur_pos=cur_pos,
-            cur_orientation=cur_orientation,
-            grid_size=20
-        )
+        ultrasonic_detect.scan_surroundings()
         cur_orientation, cur_pos = navigate_path(path[:2], cur_orientation, cur_pos, stop_sign_detector)
         path = path[2:]
     # main()
