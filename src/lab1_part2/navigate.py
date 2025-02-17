@@ -95,7 +95,7 @@ def main():
             break
         while stop_sign_detector.run():
             time.sleep(0.1)
-        cur_orientation, cur_pos = navigate_path(path[:10], cur_orientation, cur_pos, stop_sign_detector)
+        cur_orientation, cur_pos = navigate_path(path[:5], cur_orientation, cur_pos, stop_sign_detector)
         if cur_pos == destination:
             print("reached destination")
             break
