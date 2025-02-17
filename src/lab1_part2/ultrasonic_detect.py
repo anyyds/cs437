@@ -30,6 +30,7 @@ def scan_surroundings(obstacle_grid, cur_pos = (19,39), cur_orientation = 'N', g
         fc.time.sleep(0.05)
         # get distance in cm
         dist_cm = fc.us.get_distance()
+        print(angle_deg, dist_cm)
         if dist_cm < 0:
             continue
         
