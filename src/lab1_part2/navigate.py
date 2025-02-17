@@ -125,7 +125,7 @@ if __name__ == "__main__":
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ]
     map1 = np.array(map1)
-    cur_pos = (19, 19)
+    cur_pos = (18, 18)
     destination = (0, 0)
     cur_orientation = 'N'
     obstacle_grid = map1
