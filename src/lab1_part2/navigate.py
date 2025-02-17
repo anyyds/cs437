@@ -189,177 +189,105 @@ if __name__ == "__main__":
     def map2():
         stop_sign_detector = StopSignDetector()
         while stop_sign_detector.run():
-            time.sleep(0.1)
+            time.sleep(0.3)
         detect()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
         turn_left()
         while stop_sign_detector.run():
-            time.sleep(0.1)
+            time.sleep(0.3)
         detect()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
+        move_forward()
         move_forward()
         while stop_sign_detector.run():
-            time.sleep(0.1)
-        move_forward()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
+            time.sleep(0.3)
         detect()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
+        move_forward()
         move_forward()
         while stop_sign_detector.run():
-            time.sleep(0.1)
-        move_forward()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
+            time.sleep(0.3)
         detect()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
         move_forward()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
 
         turn_right()
         while stop_sign_detector.run():
-            time.sleep(0.1)
+            time.sleep(0.3)
         detect()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
 
         turn_right()
         while stop_sign_detector.run():
-            time.sleep(0.1)
+            time.sleep(0.3)
         detect()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
+        move_forward()
         move_forward()
         while stop_sign_detector.run():
-            time.sleep(0.1)
-        move_forward()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
+            time.sleep(0.3)
         detect()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
+        move_forward()
         move_forward()
         while stop_sign_detector.run():
-            time.sleep(0.1)
-        move_forward()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
+            time.sleep(0.3)
         detect()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
 
         turn_left()
         while stop_sign_detector.run():
-            time.sleep(0.1)
+            time.sleep(0.3)
         detect()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
+        move_forward()
         move_forward()
         while stop_sign_detector.run():
-            time.sleep(0.1)
-        move_forward()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
+            time.sleep(0.3)
         detect()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
+        move_forward()
         move_forward()
         while stop_sign_detector.run():
-            time.sleep(0.1)
-        move_forward()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
+            time.sleep(0.3)
         detect()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
+        move_forward()
         move_forward()
         while stop_sign_detector.run():
-            time.sleep(0.1)
-        move_forward()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
+            time.sleep(0.3)
         detect()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
+        move_forward()
         move_forward()
         while stop_sign_detector.run():
-            time.sleep(0.1)
-        move_forward()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
+            time.sleep(0.3)
         detect()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
 
         turn_left()
         while stop_sign_detector.run():
-            time.sleep(0.1)
+            time.sleep(0.3)
         detect()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
+        move_forward()
         move_forward()
         while stop_sign_detector.run():
-            time.sleep(0.1)
-        move_forward()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
+            time.sleep(0.3)
         detect()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
+        move_forward()
         move_forward()
         while stop_sign_detector.run():
-            time.sleep(0.1)
-        move_forward()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
+            time.sleep(0.3)
         detect()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
 
         turn_right()
         while stop_sign_detector.run():
-            time.sleep(0.1)
+            time.sleep(0.3)
         detect()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
+        move_forward()
         move_forward()
         while stop_sign_detector.run():
-            time.sleep(0.1)
-        move_forward()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
+            time.sleep(0.3)
         detect()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
+        move_forward()
         move_forward()
         while stop_sign_detector.run():
-            time.sleep(0.1)
-        move_forward()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
+            time.sleep(0.3)
         detect()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
+        move_forward()
         move_forward()
         while stop_sign_detector.run():
-            time.sleep(0.1)
-        move_forward()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
+            time.sleep(0.3)
         detect()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
         move_forward()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
         move_forward()
-        while stop_sign_detector.run():
-            time.sleep(0.1)
     # map1()
     map2()
 
