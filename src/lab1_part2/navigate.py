@@ -87,19 +87,20 @@ def main():
 
 
 if __name__ == "__main__":
-    test_grid = np.array([
-        [0, 0, 1, 0, 0],
-        [0, 1, 0, 1, 1],
-        [0, 0, 0, 0, 0],
-        [1, 1, 1, 0, 0],
-        [0, 0, 0, 0, 0]
-    ])
-    start_coord = (2, 4)
-    dest_coord = (0, 0)
+    # test_grid = np.array([
+    #     [0, 0, 1, 0, 0],
+    #     [0, 1, 0, 1, 1],
+    #     [0, 0, 0, 0, 0],
+    #     [1, 1, 1, 0, 0],
+    #     [0, 0, 0, 0, 0]
+    # ])
+    # start_coord = (2, 4)
+    # dest_coord = (0, 0)
 
-    result_path = plan_path(test_grid, start_coord, dest_coord)
-    if result_path is None:
-        print("No path found.")
-    else:
-        print("Path found:", result_path)
-        navigate_path(result_path)
+    # result_path = plan_path(test_grid, start_coord, dest_coord)
+    # if result_path is None:
+    #     print("No path found.")
+    # else:
+    #     print("Path found:", result_path)
+    #     navigate_path(result_path)
+    main()
