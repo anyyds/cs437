@@ -45,7 +45,7 @@ def main():
     grid_size=20
     obstacle_grid = np.zeros((grid_size, grid_size), dtype=int)
     obstacle_grid = scan_surroundings(obstacle_grid, cur_pos=(9, 9), cur_orientation='S', grid_size=grid_size)
-    obstacle_grid[9, 19] = 2
+    obstacle_grid[9, 9] = 2
     print(obstacle_grid)
 
 if __name__ == "__main__":
