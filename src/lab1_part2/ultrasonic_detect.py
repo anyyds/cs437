@@ -27,7 +27,7 @@ def scan_surroundings(obstacle_grid, cur_pos = (19,39), cur_orientation = 'N', g
         abs_angle_deg = angle_offset + angle_deg
         # set servo angle
         fc.servo.set_angle(angle_deg)
-        fc.time.sleep(0.05)
+        fc.time.sleep(0.15)
         # get distance in cm
         dist_cm = fc.us.get_distance()
         print(angle_deg, dist_cm)
