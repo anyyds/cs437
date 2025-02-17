@@ -45,8 +45,6 @@ def navigate_path(path, cur_orientation, cur_pos, stop_sign_detector):
 
     # Move cell by cell
     for i in range(len(path) - 1):
-        while stop_sign_detector.run():
-            continue
         (x1, y1) = path[i]
         (x2, y2) = path[i + 1]
         dx = x2 - x1
@@ -95,6 +93,8 @@ def main():
         if not path:
             print("No valid path found")
             break
+        while stop_sign_detector.run():
+            time.sleep(0.1)
         cur_orientation, cur_pos = navigate_path(path[:10], cur_orientation, cur_pos, stop_sign_detector)
         if cur_pos == destination:
             print("reached destination")
