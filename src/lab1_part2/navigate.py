@@ -72,7 +72,7 @@ def navigate_path(path, cur_orientation, cur_pos):
     return cur_orientation, cur_pos
 
 def main():
-    cur_pos = (3, 6)
+    cur_pos = (9, 19)
     destination = (0, 0)
     cur_orientation = 'N'
     grid_size = 20
